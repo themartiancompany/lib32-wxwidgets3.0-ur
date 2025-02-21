@@ -43,7 +43,7 @@ _sdl2="true"
 _gl="true"
 _compat28="true"
 _Pkg="wxWidgets"
-_pkg="wxwidgets"
+_pkg=wxwidgets
 _majver="3.0"
 pkgbase="${_ml}${_pkg}${_majver}"
 pkgname=(
@@ -114,9 +114,11 @@ _url="${_http}/${_ns}/${_Pkg}"
 _tarname="${_Pkg}-${pkgver}"
 source=(
   "${_tarname}.tar.bz2::${_url}/releases/download/v${pkgver}/${_tarname}.tar.bz2"
+  "${_pkg}-license.txt"
 )
 sha256sums=(
   '440f6e73cf5afb2cbf9af10cec8da6cdd3d3998d527598a53db87099524ac807'
+  '5929947e6811ada59f65282a259ea167146977b8863b7371711a5d910e3b1d00'
 )
 
 _usr_get() {
@@ -276,7 +278,7 @@ package_lib32-wxwidgets3.0-common() {
     true
   install \
     -Dm644 \
-    "docs/license.txt" \
+    "${srcdir}/${_pkg}-license.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -325,7 +327,7 @@ package_lib32-wxwidgets3.0-gtk2() {
     true
   install \
     -Dm644 \
-    "docs/licence.txt" \
+    "${srcdir}/${_pkg}-license.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -369,6 +371,6 @@ package_lib32-wxwidgets3.0-gtk3() {
     true
   install \
     -Dm644 \
-    "docs/licence.txt" \
+    "${srcdir}/${_pkg}-license.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
