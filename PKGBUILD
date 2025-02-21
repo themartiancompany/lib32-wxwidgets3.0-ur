@@ -140,7 +140,7 @@ _build() {
     _pkg_config_path \
     _lib
   _lib="$( \
-    usr_get)/lib32"
+    _usr_get)/lib32"
   _pkg_config_path="${_lib}/pkgconfig"
   _gcc_opts=(
     -m32
