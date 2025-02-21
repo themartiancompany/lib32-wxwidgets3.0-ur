@@ -204,6 +204,8 @@ _build() {
       --without-opengl
     )
   fi
+  pwd
+  ls
   make
   if [[ "${_gtk_ver}" == "3" ]]; then
     make \
