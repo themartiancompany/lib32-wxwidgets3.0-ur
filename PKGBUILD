@@ -146,7 +146,7 @@ _build() {
     -m32
   )
   _cc="gcc ${_gcc_opts[*]}"
-  _cxx="g+= ${_gcc_opts[*]}"
+  _cxx="g++ ${_gcc_opts[*]}"
   if [[ "${_gtk_ver}" != "" ]]; then
     _build_dir="${_tarname}-gtk${_gtk_ver}"
   elif [[ "${_gtk_ver}" == "" ]]; then
@@ -204,6 +204,8 @@ _build() {
       --without-opengl
     )
   fi
+  ./configure \
+    "${_configure_opts[@]}"
   pwd
   ls
   make
