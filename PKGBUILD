@@ -75,6 +75,7 @@ license=(
 makedepends=(
   "${_ml}gst-plugins-base"
   "${_ml}libnotify"
+  "${_ml}libsm"
 )
 if [[ "${_gtk2}" == "true" ]]; then
   makedepends+=(
@@ -267,7 +268,8 @@ package_lib32-wxwidgets3.0-common() {
     -r \
     "${pkgdir}/usr/bin/wx-config" \
     "${pkgdir}/usr/lib/wx" \
-    "${pkgdir}/usr/lib/libwx_gtk"*
+    "${pkgdir}/usr/lib/libwx_gtk"* || \
+    true
   mv \
     "${pkgdir}/usr/bin/wxrc" \
     "${pkgdir}/usr/bin/wxrc32"
@@ -318,7 +320,8 @@ package_lib32-wxwidgets3.0-gtk2() {
     "${pkgdir}/usr/include" \
     "${pkgdir}/usr/share" \
     "${pkgdir}/usr/lib/libwx_base"*
-    "${pkgdir}/usr/bin/wxrc"*
+    "${pkgdir}/usr/bin/wxrc"* || \
+    true
   install \
     -Dm644 \
     "docs/licence.txt" \
@@ -357,7 +360,8 @@ package_lib32-wxwidgets3.0-gtk3() {
     "${pkgdir}/usr/include" \
     "${pkgdir}/usr/share" \
     "${pkgdir}/usr/lib/libwx_base"*
-    "${pkgdir}/usr/bin/wxrc"*
+    "${pkgdir}/usr/bin/wxrc"* || \
+    true
   mv \
     "${pkgdir}/usr/bin/wx-config" \
     "${pkgdir}/usr/bin/wx-config32-gtk3-3.0"
