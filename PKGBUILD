@@ -322,7 +322,7 @@ package_lib32-wxwidgets3.0-gtk2() {
     -r \
     "${pkgdir}/usr/include" \
     "${pkgdir}/usr/share" \
-    "${pkgdir}/usr/lib/libwx_base"*
+    "${pkgdir}/usr/lib/libwx_base"* \
     "${pkgdir}/usr/bin/wxrc"* || \
     true
   install \
@@ -362,7 +362,7 @@ package_lib32-wxwidgets3.0-gtk3() {
     -r \
     "${pkgdir}/usr/include" \
     "${pkgdir}/usr/share" \
-    "${pkgdir}/usr/lib/libwx_base"*
+    "${pkgdir}/usr/lib/libwx_base"* \
     "${pkgdir}/usr/bin/wxrc"* || \
     true
   mv \
