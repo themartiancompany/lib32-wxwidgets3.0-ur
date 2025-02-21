@@ -168,6 +168,7 @@ _build() {
     CXX="${_cxx}" \
     PKG_CONFIG_PATH="${_pkg_config_path}"
   _configure_opts+=(
+    --prefix="/usr"
     --with-gtk="${_gtk_ver}"
     --with-libpng="sys"
     --with-libxpm="sys"
@@ -332,6 +333,10 @@ package_lib32-wxwidgets3.0-gtk2() {
 }
 
 package_lib32-wxwidgets3.0-gtk3() {
+  local \
+    _lib
+  _lib="$( \
+    _usr_get)/lib32"
   _pkgdesc=(
     'GTK+3 implementation of'
     'wxWidgets API for GUI, version 3.0.'
@@ -357,6 +362,7 @@ package_lib32-wxwidgets3.0-gtk3() {
     "${_tarname}-gtk3"
   make \
     DESTDIR="${pkgdir}" \
+    libdir="${_lib}" \
     install
   rm \
     -r \
