@@ -224,7 +224,7 @@ build() {
   fi
 }
 
-_package_lib32-wxwidgets3.0-common() {
+package_lib32-wxwidgets3.0-common() {
   local \
     _lib
   _lib="$( \
@@ -271,7 +271,7 @@ _package_lib32-wxwidgets3.0-common() {
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-_package_lib32-wxwidgets3.0-gtk2() {
+package_lib32-wxwidgets3.0-gtk2() {
   local \
     _lib
   _lib="$( \
@@ -318,7 +318,7 @@ _package_lib32-wxwidgets3.0-gtk2() {
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-_package_lib32-wxwidgets3.0-gtk3() {
+package_lib32-wxwidgets3.0-gtk3() {
   _pkgdesc=(
     'GTK+3 implementation of'
     'wxWidgets API for GUI, version 3.0.'
