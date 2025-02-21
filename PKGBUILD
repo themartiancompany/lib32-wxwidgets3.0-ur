@@ -272,7 +272,8 @@ package_lib32-wxwidgets3.0-common() {
     true
   mv \
     "${pkgdir}/usr/bin/wxrc" \
-    "${pkgdir}/usr/bin/wxrc32"
+    "${pkgdir}/usr/bin/wxrc32" || \
+    true
   install \
     -Dm644 \
     "docs/license.txt" \
@@ -364,7 +365,8 @@ package_lib32-wxwidgets3.0-gtk3() {
     true
   mv \
     "${pkgdir}/usr/bin/wx-config" \
-    "${pkgdir}/usr/bin/wx-config32-gtk3-3.0"
+    "${pkgdir}/usr/bin/wx-config32-gtk3-3.0" || \
+    true
   install \
     -Dm644 \
     "docs/licence.txt" \
