@@ -114,7 +114,7 @@ source=(
   "${_tarname}.tar.bz2::${_url}/releases/download/v${pkgver}/${_tarname}.tar.bz2"
 )
 sha256sums=(
-  '8aacd56b462f42fb6e33b4d8f5d40be5abc3d3b41348ea968aa515cc8285d813'
+  '440f6e73cf5afb2cbf9af10cec8da6cdd3d3998d527598a53db87099524ac807'
 )
 
 _usr_get() {
@@ -235,13 +235,14 @@ package_lib32-wxwidgets3.0-common() {
   )
   pkgdesc="${_pkgdesc[*]}"
   provides=(
+    "${_pkg}-common=${pkgver}"
     "${_ml}${_pkg}-common-${_majver}"
     "${_ml}${_pkg}-common=${pkgver}"
   )
   depends=(
-    "${_expat}"
-    "${_libc}"
-    "zlib"
+    "${_ml}${_expat}"
+    "${_ml}${_libc}"
+    "${_ml}zlib"
   )
   if [[ "${_gtk2}" == "false" && \
 	"${_gtk3}" == "false" ]]; then
@@ -282,6 +283,7 @@ package_lib32-wxwidgets3.0-gtk2() {
   )
   pkgdesc="${_pkgdesc[*]}"
   provides=(
+    "${_pkg}-gtk2=${pkgver}"
     "${_ml}${_pkg}-gtk2-${_majver}"
     "${_ml}${_pkg}-gtk2=${pkgver}"
     "${_ml}wxgtk2=${pkgver}"
@@ -325,6 +327,7 @@ package_lib32-wxwidgets3.0-gtk3() {
   )
   pkgdesc="${_pkgdesc[*]}"
   provides=(
+    "${_pkg}-gtk3=${pkgver}"
     "${_ml}${_pkg}-gtk3-${_majver}"
     "${_ml}${_pkg}-gtk3=${pkgver}"
     "${_ml}wxgtk=${pkgver}"
