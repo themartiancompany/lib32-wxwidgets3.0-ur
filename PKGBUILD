@@ -117,11 +117,36 @@ sha256sums=(
   '8aacd56b462f42fb6e33b4d8f5d40be5abc3d3b41348ea968aa515cc8285d813'
 )
 
+_usr_get() {
+  local \
+    _bin
+  _bin="$( \
+    dirname \
+      "$(command \
+           -v \
+	   "env")")"
+  dirname \
+    "${_bin}"
+}
+
 _build() {
   local \
     _gtk_ver="${1}" \
     _configure_opts=() \
-    _build_dir
+    _build_dir \
+    _gcc_opts=() \
+    _cc \
+    _cxx \
+    _pkg_config_path \
+    _lib
+  _lib="$( \
+    usr_get)/lib32"
+  _pkg_config_path="${_lib}/pkgconfig"
+  _gcc_opts=(
+    -m32
+  )
+  _cc="gcc ${_gcc_opts[*]}"
+  _cxx="g+= ${_gcc_opts[*]}"
   if [[ "${_gtk_ver}" != "" ]]; then
     _build_dir="${_tarname}-gtk${_gtk_ver}"
   elif [[ "${_gtk_ver}" == "" ]]; then
@@ -134,6 +159,10 @@ _build() {
     true
   cd \
     "${_build_dir}"
+  export \
+    CC="${_cc}" \
+    CXX="${_cxx}" \
+    PKG_CONFIG_PATH="${_pkg_config_path}"
   _configure_opts+=(
     --with-gtk="${_gtk_ver}"
     --with-libpng="sys"
@@ -196,6 +225,10 @@ build() {
 }
 
 _package_lib32-wxwidgets3.0-common() {
+  local \
+    _lib
+  _lib="$( \
+    _usr_get)/lib32"
   _pkgdesc=(
     'Common libraries and headers'
     'for wxgtk2 and wxgtk3, version 3.0.'
@@ -222,6 +255,7 @@ _package_lib32-wxwidgets3.0-common() {
     "${_build_dir}"
   make \
     DESTDIR="${pkgdir}" \
+    libdir="${_lib}" \
     install
   rm \
     -r \
@@ -238,6 +272,10 @@ _package_lib32-wxwidgets3.0-common() {
 }
 
 _package_lib32-wxwidgets3.0-gtk2() {
+  local \
+    _lib
+  _lib="$( \
+    _usr_get)/lib32"
   _pkgdesc=(
     'GTK+2 implementation of'
     'wxWidgets API for GUI, version 3.0.'
@@ -266,6 +304,7 @@ _package_lib32-wxwidgets3.0-gtk2() {
     "${_tarname}-gtk2"
   make \
     DESTDIR="${pkgdir}" \
+    libdir="${_lib}" \
     install
   rm \
     -r \
