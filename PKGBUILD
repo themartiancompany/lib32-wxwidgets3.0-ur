@@ -74,6 +74,7 @@ license=(
 )
 makedepends=(
   "${_ml}gst-plugins-base"
+  "${_ml}libnotify"
 )
 if [[ "${_gtk2}" == "true" ]]; then
   makedepends+=(
