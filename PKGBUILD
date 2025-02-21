@@ -358,8 +358,8 @@ package_lib32-wxwidgets3.0-gtk3() {
     "${pkgdir}/usr/lib/libwx_base"*
     "${pkgdir}/usr/bin/wxrc"*
   mv \
-    "${pkgdir}/lusr/bin/wx-config" \
-    "${pkgdir}/lusr/bin/wx-config32-gtk3-3.0"
+    "${pkgdir}/usr/bin/wx-config" \
+    "${pkgdir}/usr/bin/wx-config32-gtk3-3.0"
   install \
     -Dm644 \
     "docs/licence.txt" \
