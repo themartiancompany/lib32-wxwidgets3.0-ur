@@ -153,6 +153,9 @@ _build() {
   _cc="gcc ${_gcc_opts[*]}"
   _cxx="g++ ${_gcc_opts[*]}"
   if [[ "${_gtk_ver}" != "" ]]; then
+    _configure_opts+=(
+      --with-gtk="${_gtk_ver}"
+    )
     _build_dir="${_tarname}-gtk${_gtk_ver}"
   elif [[ "${_gtk_ver}" == "" ]]; then
     _build_dir="${_tarname}"
@@ -171,7 +174,6 @@ _build() {
   _configure_opts+=(
     --prefix="/usr"
     --datadir="/usr/share/${_pkgbase}-32"
-    --with-gtk="${_gtk_ver}"
     --with-libpng="sys"
     --with-libxpm="sys"
     --with-libjpeg="sys"
