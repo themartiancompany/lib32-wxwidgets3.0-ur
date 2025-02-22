@@ -143,7 +143,10 @@ _build() {
     _cc \
     _cxx \
     _pkg_config_path \
-    _lib
+    _lib \
+    _oldpwd
+  _oldpwd="$( \
+    pwd)"
   _lib="$( \
     _usr_get)/lib32/${_pkgbase}"
   _pkg_config_path="${_lib}/pkgconfig"
@@ -224,6 +227,8 @@ _build() {
         "locale" \
       allmo
   fi
+  cd \
+    "${_oldpwd}"
 }
 
 build() {
