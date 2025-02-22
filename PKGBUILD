@@ -45,7 +45,8 @@ _compat28="true"
 _Pkg="wxWidgets"
 _pkg=wxwidgets
 _majver="3.0"
-pkgbase="${_ml}${_pkg}${_majver}"
+_pkgbase="${_pkg}${_majver}"
+pkgbase="${_ml}${_pkgbase}"
 pkgname=(
   "${pkgbase}-common"
 )
@@ -144,7 +145,7 @@ _build() {
     _pkg_config_path \
     _lib
   _lib="$( \
-    _usr_get)/lib32"
+    _usr_get)/lib32/${_pkgbase}"
   _pkg_config_path="${_lib}/pkgconfig"
   _gcc_opts=(
     -m32
@@ -169,6 +170,7 @@ _build() {
     PKG_CONFIG_PATH="${_pkg_config_path}"
   _configure_opts+=(
     --prefix="/usr"
+    --datadir="/usr/share/${_pkgbase}-32"
     --with-gtk="${_gtk_ver}"
     --with-libpng="sys"
     --with-libxpm="sys"
@@ -237,7 +239,7 @@ package_lib32-wxwidgets3.0-common() {
   local \
     _lib
   _lib="$( \
-    _usr_get)/lib32"
+    _usr_get)/lib32/${_pkgbase}"
   _pkgdesc=(
     'Common libraries and headers'
     'for wxgtk2 and wxgtk3, version 3.0.'
@@ -270,8 +272,8 @@ package_lib32-wxwidgets3.0-common() {
   rm \
     -r \
     "${pkgdir}/usr/bin/wx-config" \
-    "${pkgdir}/usr/lib/wx" \
-    "${pkgdir}/usr/lib/libwx_gtk"* || \
+    "${pkgdir}${_lib}/wx" \
+    "${pkgdir}${_lib}/libwx_gtk"* || \
     true
   mv \
     "${pkgdir}/usr/bin/wxrc" \
@@ -287,7 +289,7 @@ package_lib32-wxwidgets3.0-gtk2() {
   local \
     _lib
   _lib="$( \
-    _usr_get)/lib32"
+    _usr_get)/lib32/${_pkgbase}"
   _pkgdesc=(
     'GTK+2 implementation of'
     'wxWidgets API for GUI, version 3.0.'
@@ -323,7 +325,7 @@ package_lib32-wxwidgets3.0-gtk2() {
     -r \
     "${pkgdir}/usr/include" \
     "${pkgdir}/usr/share" \
-    "${pkgdir}/usr/lib/libwx_base"* \
+    "${pkgdir}${_libdir}/libwx_base"* \
     "${pkgdir}/usr/bin/wxrc"* || \
     true
   install \
@@ -336,7 +338,7 @@ package_lib32-wxwidgets3.0-gtk3() {
   local \
     _lib
   _lib="$( \
-    _usr_get)/lib32"
+    _usr_get)/lib32/${_pkgbase}"
   _pkgdesc=(
     'GTK+3 implementation of'
     'wxWidgets API for GUI, version 3.0.'
@@ -368,7 +370,7 @@ package_lib32-wxwidgets3.0-gtk3() {
     -r \
     "${pkgdir}/usr/include" \
     "${pkgdir}/usr/share" \
-    "${pkgdir}/usr/lib/libwx_base"* \
+    "${pkgdir}${_libdir}/libwx_base"* \
     "${pkgdir}/usr/bin/wxrc"* || \
     true
   mv \
