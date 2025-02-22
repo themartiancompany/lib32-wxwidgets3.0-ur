@@ -37,7 +37,7 @@ elif [[ "${_os}" == "GNU/Linux" ]]; then
 fi
 _ml="lib32-"
 _webview="false"
-_gtk2="false"
+_gtk2="true"
 _gtk3="true"
 _sdl2="true"
 _gl="true"
