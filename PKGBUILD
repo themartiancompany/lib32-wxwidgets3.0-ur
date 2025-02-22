@@ -235,6 +235,10 @@ build() {
     _build \
       3
   fi
+  if [[ "${_gtk2}" == "false" && \
+	"${_gtk3}" == "false" ]]; then
+    _build
+  fi
 }
 
 package_lib32-wxwidgets3.0-common() {
@@ -327,7 +331,7 @@ package_lib32-wxwidgets3.0-gtk2() {
     -r \
     "${pkgdir}/usr/include" \
     "${pkgdir}/usr/share" \
-    "${pkgdir}${_libdir}/libwx_base"* \
+    "${pkgdir}${_lib}/libwx_base"* \
     "${pkgdir}/usr/bin/wxrc"* || \
     true
   install \
@@ -372,7 +376,7 @@ package_lib32-wxwidgets3.0-gtk3() {
     -r \
     "${pkgdir}/usr/include" \
     "${pkgdir}/usr/share" \
-    "${pkgdir}${_libdir}/libwx_base"* \
+    "${pkgdir}${_lib}/libwx_base"* \
     "${pkgdir}/usr/bin/wxrc"* || \
     true
   mv \
