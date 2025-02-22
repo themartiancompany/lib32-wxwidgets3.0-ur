@@ -339,6 +339,10 @@ package_lib32-wxwidgets3.0-gtk2() {
     "${pkgdir}${_lib}/libwx_base"* \
     "${pkgdir}/usr/bin/wxrc"* || \
     true
+  mv \
+    "${pkgdir}/usr/bin/wx-config" \
+    "${pkgdir}/usr/bin/wx-config32-gtk2-3.0" || \
+    true
   install \
     -Dm644 \
     "${srcdir}/${_pkg}-license.txt" \
