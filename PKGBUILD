@@ -216,6 +216,11 @@ _build() {
       --without-opengl
     )
   fi
+  if [[ "${_sdl2}" == "true" ]]; then
+    _configure_opts+=(
+      --with-sdl
+    )
+  fi
   ./configure \
     "${_configure_opts[@]}"
   pwd
